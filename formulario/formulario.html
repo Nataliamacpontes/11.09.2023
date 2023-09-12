@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>IFSP</title>
+    <link rel="icon" href="logoIFSP.png" >
+
+    <style>
+       * {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 17px;
+        }
+        body{
+            background-color: rgb(219, 242, 250); 
+        }
+    </style>
+
+    <script lang="Javascript">
+        function processa()
+        {
+            
+            var nome, email, dataing, periodo, extensao, nivSatis, observacoes, curso, Prontuario;
+
+            Prontuario = document.frmDados.txtpront.value;
+            nome = document.frmDados.txtNome.value;
+            email = document.frmDados.txtEmail.value;
+            dataing = (document.frmDados.txting.value==""?"???":document.frmDados.txting.value);
+            periodo = (document.frmDados.radp.value=="M"?"(x)Manhã ":"( )Manhã ");
+            periodo += (document.frmDados.radp.value=="T"?"(x)Tarde ":"( )Tarde ");
+            periodo += (document.frmDados.radp.value=="N"?"(x)Noite ":"( )Noite ");
+            curso = document.frmDados.cursos.value;
+            extensao = "";
+            extensao += (document.frmDados.Música.checked?"(x)Música <br>":"( )Música <br>");
+            extensao += (document.frmDados.Pintura.checked?"(x)Pintura <br>":"( )Pintura <br>");
+            extensao += (document.frmDados.Teatro.checked?"(x)Teatro <br>":"( )Teatro <br>");
+            nivSatis = document.frmDados.nivSatis.value;
+            
+
+            document.write("<table border='1' align='center'>");
+
+                document.write("<tr>"); 
+                 
+                 document.write("<td><img src='logoIFSP.png' height='100px' width='150px'></td>");  
+     
+                 document.write("<td colspan='2'></td>");
+
+                 document.write("</tr>");
+            document.write("<tr>"); 
+                 
+            document.write("<td colspan='2'>");  
+                document.write("Prontuario: " + Prontuario + "<br>");
+            document.write("</td>");
+
+            document.write("<td>");
+                document.write("Nível de Satisfação: " + nivSatis + "%<br>");
+            document.write("</td>");
+
+            document.write("</tr>");
+            document.write("<tr>"); 
+
+            document.write("<td colspan='3'>");
+                document.write("Nome: " + nome + "<br>");
+            document.write("</td>");
+
+            document.write("</tr>");
+            document.write("<tr>"); 
+
+            document.write("<td colspan='3'>");
+                document.write("E-mail: " + email + "<br>");
+            document.write("</td>");
+
+            document.write("</tr>");
+            document.write("<tr>"); 
+
+            document.write("<td colspan='2'>");
+                document.write("Curso: " + curso + "<br>");
+            document.write("</td>");
+
+            document.write("<td>");
+                document.write("Data de ingresso: " + dataing + "<br>");
+            document.write("</td>");
+
+            document.write("</tr>");
+            document.write("<tr>"); 
+
+            document.write("<td colspan='3'>");
+                document.write("Período:<br>");
+            document.write("</td>");
+
+            document.write("</tr>");
+            document.write("<tr>"); 
+
+            document.write("<td colspan='3'>");
+                document.write(periodo);
+            document.write("</td>");
+
+            document.write("</tr>");
+            document.write("<tr>"); 
+
+            document.write("<td rowspan='2' colspan='3'>");
+                document.write("Atividades de extensão: <br>" + extensao + "<br>");
+            document.write("</td>");
+
+            document.write("</tr>");
+            
+            document.write("</font>");
+
+            document.write("</table>");
+
+        }
+    </script>
+</head>
+<body>
+    <form name="frmDados">
+        
+        Prontuario: <input type="text" name="txtpront" value="Informe seu Prontuario"><br>
+        Nome: <input type="text" name="txtNome" value="Informe seu nome"><br>
+        E-mail institucional: <input type="email" name="txtEmail" value="Informe@seuemail.aqui"><br>
+        Curso:
+        <select name="cursos">
+            <option value="Técnico em Automação (CTA)">Técnico em Automação Industrial</option>
+            <option value="Técnico em Informática(CTI)">Técnico em Informática</option>
+            <option value="Técnico em Eventos(CTE)">Técnico em Eventos</option>
+            <option value="Educação de Joven e Adultos(EJD)">Educação de Joven e Adultos</option>
+            <option value="Tecnologia em Automação Industrial(CSA)">Tecnologia em Automação Industrial</option>
+            <option value="Tecnologia em Gestão de Turismo(TUR)">Tecnologia em Gestão de Turismo</option>
+            <option value="Tecnologia em Análise e Desenvolvimento de Sistemas(ADS)">Tecnologia em Análise e Desenvolvimento de Sistemas</option>
+            <option value="Licenciatura em Letras(LET)">Licenciatura em Letras</option>
+            <option value="Licenciatura em Matemática(LMA)">Licenciatura em Matemática</option>
+            <option value="Engenharia de Controle e Automação(ECA)">Engenharia de Controle e Automação</option>
+            <option value="Bacharelado em Turismo(TUR)">Bacharelado em Turismo</option>
+         </select><br>
+
+        Período:
+              <input type="radio" name="radp" value="M" checked>Manhã
+              <input type="radio" name="radp" value="T"> Tarde
+              <input type="radio" name="radp" value="N"> Noite<br>
+              
+        Data de ingresso: <input type="date" name="txting"><br>  
+
+        extensão:<br>
+              <input type="checkbox" name="Música" value="Música">Música<br>
+              <input type="checkbox" name="Pintura" value="Pintura">Pintura<br>
+              <input type="checkbox" name="Teatro" value="Teatro">Teatro<br>
+        
+        Nível de satisfação: <input type="range" name="nivSatis" min="0" max="100"><br><br>
+        <input type="button" value="enviar" onclick="processa();">
+        <input type="reset" value="Limpar"><br>
+    </form>
+    
+</body>
+</html>
